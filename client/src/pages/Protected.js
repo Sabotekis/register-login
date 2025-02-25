@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Cookies from 'js-cookie';
 
 const Protected = () => {
   const [email, setEmail] = useState(null);
@@ -8,20 +9,21 @@ const Protected = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const token = localStorage.getItem('token'); 
-
-      if (!token) {
-        setError('No token found');
-        return;
-      }
-
       try {
-        const response = await fetch('http://localhost:5000/api/protected', {
+        const token = Cookies.get('token');
+        console.log('Cookies:', document.cookie); // Debugging line
+        if (!token) {
+          throw new Error('No token found');
+        }
+        console.log('Token retrieved from cookie:', token); // Debugging line
+
+        const response = await fetch('http://localhost:5000/api/auth/protected', {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}` 
-          }
+            'Authorization': `Bearer ${token}`
+          },
+          credentials: 'include' // Include cookies in the request
         });
 
         if (!response.ok) {

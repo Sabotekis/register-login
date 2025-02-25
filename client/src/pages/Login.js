@@ -16,7 +16,8 @@ const Login = () => {
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ email, password })
+        body: JSON.stringify({ email, password }),
+        credentials: 'include' // Include cookies in the request
       });
   
       const data = await response.json();
@@ -26,15 +27,8 @@ const Login = () => {
         throw new Error(data.message || 'Something went wrong');
       }
   
-      if (data.token) {
-        console.log("Attempting to save token:", data.token); 
-        localStorage.setItem('token', data.token);
-        console.log("Token saved to local storage:", localStorage.getItem('token'));
-        alert("Login successful");
-        navigate('/protected');
-      } else {
-        throw new Error("Token not received");
-      }
+      alert("Login successful");
+      navigate('/protected');
     } catch (error) {
       setError(error.message);
       console.error("Login error:", error);
