@@ -3,6 +3,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 const routes = require('./routes');
 const app = express();
 
@@ -13,6 +14,7 @@ app.use(cors({
   credentials: true
 }));
 app.use(bodyParser.json());
+app.use(cookieParser()); 
 
 mongoose.connect(process.env.DB_CONNECTION_STRING, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('Connected to the database'))

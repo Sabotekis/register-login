@@ -11,19 +11,18 @@ const Protected = () => {
     const fetchData = async () => {
       try {
         const token = Cookies.get('token');
-        console.log('Cookies:', document.cookie); // Debugging line
+        console.log('Cookies:', document.cookie); 
         if (!token) {
           throw new Error('No token found');
         }
-        console.log('Token retrieved from cookie:', token); // Debugging line
+        console.log('Token retrieved from cookie:', token);
 
         const response = await fetch('http://localhost:5000/api/auth/protected', {
           method: 'GET',
           headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`
+            'Content-Type': 'application/json'
           },
-          credentials: 'include' // Include cookies in the request
+          credentials: 'include' 
         });
 
         if (!response.ok) {
