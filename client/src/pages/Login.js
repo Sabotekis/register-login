@@ -20,8 +20,7 @@ const Login = () => {
         credentials: 'include' 
       });
   
-      const data = await response.json();
-      console.log("Login API Response:", data); 
+      const data = await response.json(); 
   
       if (!response.ok) {
         throw new Error(data.message || 'Something went wrong');

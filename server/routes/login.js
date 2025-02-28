@@ -23,11 +23,9 @@ router.post('/', async (req, res) => {
       path: '/',
     });
 
-    console.log('Token set in cookie:', token);
-
-    res.status(200).json({ message: 'Login successful' });
+    res.status(200).json({ status: "success", data: null, message: 'Veiksmīgi atgriezti dati' });
   } catch (err) {
-    res.status(500).json({ message: 'Server error' });
+    res.status(500).json({ status: "error", data: null, message: 'Server error' });
   }
 });
 

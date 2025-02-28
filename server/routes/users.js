@@ -30,9 +30,9 @@ router.post('/', async (req, res) => {
     });
 
     await newUser.save();
-    res.status(201).json({ message: 'User registered successfully' });
+    res.status(201).json({ status: "success", data: null, message: 'Veiksmīgi atgriezti dati' });
   } catch (err) {
-    res.status(500).json({ message: 'Server error' });
+    res.status(500).json({ status: "error", data: null, message: 'Server error' });
   }
 });
 
