@@ -4,8 +4,8 @@ const login = require('./login');
 const protected = require('./protected');
 const router = express.Router();
 router
-    .use('/users', users)
-    .use('/login', login)
-    .use('/protected', protected);
+    .use('/auth', users)
+    .use('/auth', login)
+    .use('/auth', protected);
 
 module.exports = router;

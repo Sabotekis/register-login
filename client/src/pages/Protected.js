@@ -15,7 +15,7 @@ const Protected = () => {
           throw new Error('No token found');
         }
 
-        const response = await fetch('http://localhost:5000/api/auth/protected', {
+        const response = await fetch('/api/auth/protected', {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json'

@@ -20,7 +20,7 @@ mongoose.connect(process.env.DB_CONNECTION_STRING, { useNewUrlParser: true, useU
   .then(() => console.log('Connected to the database'))
   .catch(err => console.error('Database connection error:', err));
 
-app.use('/api/auth', routes);
+app.use('/api', routes);
 
 const PORT = process.env.PORT;
 app.listen(PORT, () => {

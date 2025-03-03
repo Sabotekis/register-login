@@ -3,7 +3,7 @@ const authMiddleware = require('../middleware/authMiddleware');
 const AccessTokensService = require('../services/AccessTokensService');
 const router = express.Router();
 
-router.get('/', authMiddleware, async (req, res) => {
+router.get('/protected', authMiddleware, async (req, res) => {
   try {
     const user = req.user;
     
